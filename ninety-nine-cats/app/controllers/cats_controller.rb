@@ -5,12 +5,12 @@ class CatsController < ApplicationController
     end
 
     def show
-        # @cat = Cat.find_by(id: params[:id])
-        # if @cat
-        #     render :show
-        # else
-        #     @cat.error.full_message, status_code: 422
-        # end
+        @cat = Cat.find_by(id: params[:id])
+        if @cat
+            render json: @cat
+        else
+            @cat.errors.full_messages, status_code = 422
+        end
     end
 
     def create

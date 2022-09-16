@@ -7,7 +7,7 @@ class CatsController < ApplicationController
     def show
         @cat = Cat.find_by(id: params[:id])
         if @cat
-            render json: @cat
+            render :show
         else
             @cat.errors.full_messages, status_code = 422
         end
@@ -21,6 +21,13 @@ class CatsController < ApplicationController
     end
 
     def new
+        @cat = Cat.new(cat_params)
+
+        if @cat && @cat.save!
+            render :new
+        else
+            @cat.errors.full_messages, status_code = 422
+        end
     end
 
     def update

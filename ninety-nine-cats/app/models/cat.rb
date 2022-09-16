@@ -4,9 +4,9 @@ require "action_view"
 class Cat < ApplicationRecord
     include ActionView::Helpers::DateHelper
 
-    CAT_COLORS = ['cream','black','white']
+    COLORS = ['cream','black','white']
     validates :birth_date, :color, :name, :sex, presence: true
-    validates :color, inclusion: { in: CAT_COLORS}
+    validates :color, inclusion: { in: COLORS}
     validates :sex, inclusion: { in: ['M', 'F']}
 
     validate :birth_date_cannot_be_future

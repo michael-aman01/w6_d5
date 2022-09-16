@@ -15,19 +15,16 @@ class CatsController < ApplicationController
 
     def create
 
+
     end
 
     def edit
     end
 
     def new
-        @cat = Cat.new(cat_params)
+        @cat = Cat.new
+        render :new
 
-        if @cat && @cat.save!
-            render :new
-        else
-            @cat.errors.full_messages, status_code = 422
-        end
     end
 
     def update

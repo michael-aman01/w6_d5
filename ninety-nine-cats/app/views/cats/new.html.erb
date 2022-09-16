@@ -1,1 +1,11 @@
-<form action="" method=""
+<form action="<%= cats_url %>" method="post" >
+<input type="radio" name="cat[sex]" value="<%= @cat.sex%>" >
+<select  name="cat[color]" value=value="<%= @cat.color%>">
+<% Cat::COLORS.each do |color|%>
+<option value="<%= color%>"> "<%= color %>"</option>
+<% end%>
+</select>
+</form>
+
+
+

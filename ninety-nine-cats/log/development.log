@@ -32,3 +32,182 @@ Migrating to CreateCats (20220916204251)
   [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(723150122408807205)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.5ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2020-01-01 00:00:00"], ["color", "white"], ["name", "Cat"], ["sex", "M"], ["description", nil], ["created_at", "2022-09-16 21:52:37.207130"], ["updated_at", "2022-09-16 21:52:37.207130"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (1.2ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2020-01-01 00:00:00"], ["color", "black"], ["name", "Cat"], ["sex", "F"], ["description", nil], ["created_at", "2022-09-16 21:53:02.293841"], ["updated_at", "2022-09-16 21:53:02.293841"]]
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+Started GET "/" for ::1 at 2022-09-16 14:53:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected label, expecting '='
+...rror.full_message, status_code: 422
+...                   ^~~~~~~~~~~~:
+  app/controllers/cats_controller.rb:12:in `'
+
+Started POST "/__better_errors/393d76e86bbb34f1/variables" for ::1 at 2022-09-16 14:53:36 -0700
+Started GET "/" for ::1 at 2022-09-16 14:54:31 -0700
+Processing by CatsController#index as HTML
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 4045)
+
+
+
+ActionView::MissingTemplate - Missing template cats/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+Searched in:
+  * "/home/vcaracol/App_Academy/Classwork/W6D5/w6_d5/ninety-nine-cats/app/views"
+Did you mean?  layouts/cats/index
+               layouts/application:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/fdf4cfe41267a21a/variables" for ::1 at 2022-09-16 14:54:31 -0700
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:55:18 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1907)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 2017)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms | Allocations: 3208)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <h1> Cat Index </h1>
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>
+c = Cat.create!(birth_date: '2020/01/01', name: 'Cat', sex: 'M', color: 'white')
+c2:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/b863843246178fca/variables" for ::1 at 2022-09-16 14:55:19 -0700
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:55:51 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1627)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1717)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2418)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <h1> Cat Index </h1>
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/f017d1f2543fec9f/variables" for ::1 at 2022-09-16 14:55:51 -0700
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:55:52 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1606)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1688)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1927)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <h1> Cat Index </h1>
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/93f3ab25e9ccbc4f/variables" for ::1 at 2022-09-16 14:55:52 -0700
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:56:44 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1634)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 1723)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms | Allocations: 2412)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <%# <h1> Cat Index </h1> %>
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/716a68e77d1a9d3b/variables" for ::1 at 2022-09-16 14:56:44 -0700
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:56:44 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1615)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1697)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1937)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <%# <h1> Cat Index </h1> %>
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/f8df01aabeacdaab/variables" for ::1 at 2022-09-16 14:56:45 -0700
+  [1m[36mCat Load (14.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'
+Started GET "/" for ::1 at 2022-09-16 14:56:57 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1621)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1710)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2399)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check 
+<ul> 
+    <% @cats.each do |cat| %>
+    <li> <%= cat.name %> </li>
+    <li> <%= cat.birth_date %> </li>
+    <li> <%= cat.color %> </li>
+    <li> <%= cat.sex %> </li>    
+</ul>
+<a href="cat_url(@cat)" > profile </a>:
+  app/controllers/cats_controller.rb:4:in `index'
+
+Started POST "/__better_errors/ac67e4e2d5646156/variables" for ::1 at 2022-09-16 14:56:57 -0700
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ (eval):72:in `block in render'

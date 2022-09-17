@@ -14,17 +14,22 @@ class CatsController < ApplicationController
     end
 
     def create
-
-
+        @cat = Cat.new(cat_params)
+        if @cat && @cat.save!
+            redirect_to cat_url(@cat)
+        else
+            render @cat.errors.full_messages, status_code: 422
+        end
     end
 
     def edit
+        @user = User.find_by(id: params[:id])
+        render :edit
     end
 
     def new
         @cat = Cat.new
         render :new
-
     end
 
     def update
